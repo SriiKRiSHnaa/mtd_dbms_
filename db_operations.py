@@ -1,3 +1,4 @@
+import sys
 import pymysql
 import db_connect2 as dbc2
 
@@ -137,10 +138,15 @@ def list_employees():
         connection = dbc2.db_connect()
         cursor = connection.cursor()
         cursor.execute(query)
-        rows = cursor.fetchmany()
+        rows = cursor.fetchall()
         if rows:
+            print('-'*60)
+            print('%-5s %-20s %-7s %-10s %-15s' % ('ID', 'NAME', 'AGE', 'SALARY', 'PHONE'))
+            print('-'*60)
             for row in rows:
-                print(row)
+                print('%-5s %-20s %-7s %-10s %-15s' % row)
+            print('-'*60)
+
         else:
             print(f'No Employee Record was Found')
         cursor.close()
@@ -148,4 +154,34 @@ def list_employees():
     except Exception as e:
         print('Employee listing failed', e)
 
-list_employees()
+def menu(choice):
+    match choice:
+        case 1:
+            insert_employee()
+        case 2:
+            update_employee()
+        case 3:
+            delete_employee()
+        case 4:
+            search_employee()
+        case 5:
+            list_employees() 
+        case 6: 
+            sys.exit('End of Execution')
+        case _:
+            print('Invalid choice')
+
+def run_employee_app():
+    while True:
+        print('1. Insert Employee')
+        print('2. Update Employee Salary')
+        print('3. Delete Employee')
+        print('4. Search Employee')
+        print('5. List Employees')
+        print('6. Exit')
+        choice = int(input('Enter your choice: '))
+        if choice == 6:
+            break
+        menu(choice)
+
+run_employee_app()
