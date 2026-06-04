@@ -140,12 +140,12 @@ def list_employees():
         cursor.execute(query)
         rows = cursor.fetchall()
         if rows:
-            print('-'*60)
-            print('%-5s %-20s %-7s %-10s %-15s' % ('ID', 'NAME', 'AGE', 'SALARY', 'PHONE'))
-            print('-'*60)
+            print('-'*73)
+            print('| %-5s | %-20s | %-7s | %-10s | %-15s |' % ('ID', 'NAME', 'AGE', 'SALARY', 'PHONE'))
+            print('-'*73)
             for row in rows:
-                print('%-5s %-20s %-7s %-10s %-15s' % row)
-            print('-'*60)
+                print('| %-5s | %-20s | %-7s | %-10s | %-15s |' % row)
+            print('-'*73)
 
         else:
             print(f'No Employee Record was Found')
