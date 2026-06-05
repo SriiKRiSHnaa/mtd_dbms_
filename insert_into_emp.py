@@ -1,7 +1,7 @@
 import pymysql
 import db_connect2 as dbc2
 
-def insert_into_emp():
+def insert_into_employee():
     query = 'insert into emp(name, age, salary, phone) values(%s, %s, %s, %s)'
     try:
         connection = dbc2.db_connect()
@@ -22,4 +22,4 @@ def insert_into_emp():
     except Exception as e:
         print('Record insertion failed', e)
 
-insert_into_emp()
+insert_into_employee()
