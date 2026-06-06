@@ -1,7 +1,7 @@
 const { MongoClient } = require('mongodb');
 const readline = require('readline');
 
-const url = 'mongodb+srv://srikrishnabiradar2k06_db_user:SriKrishna04@cluster0.mdssd4g.mongodb.net/';
+const url = 'mongodb+srv://<username>:<password>@<host>/';
 const client = new MongoClient(url);
 
 const rl = readline.createInterface({
